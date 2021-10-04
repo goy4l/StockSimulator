@@ -60,7 +60,24 @@ def activate(request, uidb64, token):
     else:
         return HttpResponse('Activation link is invalid!')
 
+
 @login_required
 def home(request):
-    return render(request,"home.html")
+    return render(request,"simulator/myspace.html")
+
+@login_required
+def portfolio(request):
+    return render(request,"simulator/portfolio.html")
+
+@login_required
+def thistory(request):
+    return render(request,"simulator/transaction_history.html")
+
+@login_required
+def orderbook(request):
+    return render(request,"simulator/order_book.html")
+
+@login_required
+def pnl(request):
+    return render(request,"simulator/pnl.html")
 

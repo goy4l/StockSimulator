@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Customers | Flower Finance{% endblock %}
+{% block title %}Order Book  | XAVAGE '21{% endblock %}
 
 {% block content %}
 
@@ -17,7 +17,7 @@
                 <!-- ============================================================== -->
                 <div class="row page-titles">
                     <div class="col-md-5 col-8 align-self-center">
-                        <h3 class="text">My Space</h3>
+                        <h3 class="text">Order Book</h3>
                       
                     </div>
                   
@@ -31,51 +31,10 @@
                 <!-- Row -->
          
                 <!-- Row -->
-                {% if customer %}
-                <div class="row">
-                    <!-- Column -->
-                    
-                    <!-- Column -->
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                           
-                                <div class="table-responsive">
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                        
-                                                <th>Email</th>
-                                                <th>Product</th>
-                                                <th>Portal</th>
-                                            
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {% for item in customer %}
-                                      
-                                            <tr>
-                                                <td>{{ item.email }}</td>
-                                                <td>{{ item.product.id }}</td>
-                                                <td><a href="../customer-portal/{{ item.stripe_id }}">Link</a></td>
-                                           
-                                            
-                                            </tr>
-                                                {% endfor %}
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <!-- Column -->
-
-
-                </div>
-                {% else %}
+            
 
                 <p>Hi {{user.username}}!</p>
-                {% endif %}
+              
                 <!-- Row -->
                 <!-- Row -->
                 
