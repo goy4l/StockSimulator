@@ -17,7 +17,7 @@
                 <!-- ============================================================== -->
                 <div class="row page-titles">
                     <div class="col-md-5 col-8 align-self-center">
-                        <h3 class="text">Transaction History</h3>
+                        <h3 class="text">News Updates</h3>
                       
                     </div>
                   
@@ -36,18 +36,15 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                
+                                <h4 class="card-title">Latest Updates</h4>
                                 <div class="table-responsive">
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <th>Type</th>
+                                            
+                                                <th>Title</th>
                                                 <th>Stock</th>
-                                                <th>Quantity</th>
-                                                <th>Buy Price</th>
-                                                <th>Transaction Amount</th>
-                                                <th>Buy Time</th>
-
+                                                <th>Time</th>
                                                 
                                             </tr>
                                         </thead>
@@ -55,11 +52,8 @@
                                         
                                             {% for item in items %}
                                     <tr>        
-                                                <td>{{item.ttype}}</td>
+                                                <td><a href='/news/{{ item.id }}/'>{{item.title}}</a></td>
                                                 <td>{{item.stock}}</td>
-                                                <td>{{item.quantity}}</td>
-                                                <td>{{item.buy_price}}</td>
-                                                <td>{{item.total_investment}}</td>
                                                 <td>{{item.created_at}}</td>
                                     </tr>
                                         {% endfor %}
@@ -72,6 +66,8 @@
                     </div>
                  
                 </div>
+
+                
               
                 <!-- Row -->
                 <!-- Row -->

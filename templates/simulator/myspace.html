@@ -17,7 +17,7 @@
                 <!-- ============================================================== -->
                 <div class="row page-titles">
                     <div class="col-md-5 col-8 align-self-center">
-                        <h3 class="text">My Space</h3>
+                        <h3 class="text">Stocks</h3>
                       
                     </div>
                   
@@ -33,7 +33,42 @@
                 <!-- Row -->
             
 
-                <p>Hi {{user.username}}!</p>
+                <div class="row">
+                    <!-- column -->
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                           
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                            
+                                            
+                                                <th>Stock</th>
+                                                <th>Price</th>
+                                                
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        
+                                            {% for item in items %}
+                                    <tr>        
+                                                <td>{{item.name}}</td>
+                                                <td>{{item.price}}</td>
+                                              
+                                    </tr>
+                                        {% endfor %}
+                                           
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 
+                </div>
               
                 <!-- Row -->
                 <!-- Row -->

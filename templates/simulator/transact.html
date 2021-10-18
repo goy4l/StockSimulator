@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}My Space | XAVAGE '21{% endblock %}
+{% block title %}Products| Flower Finance{% endblock %}
 
 {% block content %}
 
@@ -17,10 +17,19 @@
                 <!-- ============================================================== -->
                 <div class="row page-titles">
                     <div class="col-md-5 col-8 align-self-center">
-                        <h3 class="text">Transaction History</h3>
+                        <h3 class="text">Transact Stock</h3>
                       
                     </div>
-                  
+                    <div class="col-md-7 col-4 align-self-center">
+                        <div class="d-flex m-t-10 justify-content-end">
+                           
+                            <div class="d-flex m-r-20 m-l-10 hidden-md-down">
+                                <p>Balance : {{request.user.lauth.balance}}</p>
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
                 </div>
                 <!-- ============================================================== -->
                 <!-- End Bread crumb and right sidebar toggle -->
@@ -32,47 +41,55 @@
          
                 <!-- Row -->
                 <div class="row">
-                    <!-- column -->
+                    <!-- Column -->
+                    
+                    <!-- Column -->
                     <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
+                        
+                            <div class="card-body"></div>
+                           
                                 
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>Type</th>
-                                                <th>Stock</th>
-                                                <th>Quantity</th>
-                                                <th>Buy Price</th>
-                                                <th>Transaction Amount</th>
-                                                <th>Buy Time</th>
-
-                                                
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        
-                                            {% for item in items %}
-                                    <tr>        
-                                                <td>{{item.ttype}}</td>
-                                                <td>{{item.stock}}</td>
-                                                <td>{{item.quantity}}</td>
-                                                <td>{{item.buy_price}}</td>
-                                                <td>{{item.total_investment}}</td>
-                                                <td>{{item.created_at}}</td>
-                                    </tr>
+                               <div class="row justify-content-center">  
+                                <div class="col-md-5 shadow-sm p-3 mb-5 bg-white rounded">   
+                                    <br>
+                                    {% if form.errors %}
+                                    {% for field in form %}
+                                        {% for error in field.errors %}
+                                            <div class="alert alert-danger">
+                                                <strong>{{ error|escape }}</strong>
+                                            </div>
                                         {% endfor %}
-                                           
-                                        </tbody>
-                                    </table>
-                                </div>
+                                    {% endfor %}
+                                    {% for error in form.non_field_errors %}
+                                        <div class="alert alert-danger">
+                                            <strong>{{ error|escape }}</strong>
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+
+                                {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+                                    <form method="post">  
+                                        {% csrf_token %}  
+                                        {{ form.as_p }}
+                                        <br>
+                                        <button type="submit" class="btn btn-primary">Submit</button>  
+                                    </form>  
+                                </div>  
+                            </div>  
+                            
                             </div>
-                        </div>
+                        
                     </div>
-                 
+                <!-- Column -->
+
+
                 </div>
-              
                 <!-- Row -->
                 <!-- Row -->
                 
@@ -94,7 +111,7 @@
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <footer class="footer">© 2021 Xavage 2021</footer>
+            <footer class="footer"> © 2021 Flower Finance</footer>
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->

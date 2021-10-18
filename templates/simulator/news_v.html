@@ -17,7 +17,7 @@
                 <!-- ============================================================== -->
                 <div class="row page-titles">
                     <div class="col-md-5 col-8 align-self-center">
-                        <h3 class="text">Transaction History</h3>
+                        <h3 class="text">News Update : {{item.stock}}</h3>
                       
                     </div>
                   
@@ -36,42 +36,15 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>Type</th>
-                                                <th>Stock</th>
-                                                <th>Quantity</th>
-                                                <th>Buy Price</th>
-                                                <th>Transaction Amount</th>
-                                                <th>Buy Time</th>
-
-                                                
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        
-                                            {% for item in items %}
-                                    <tr>        
-                                                <td>{{item.ttype}}</td>
-                                                <td>{{item.stock}}</td>
-                                                <td>{{item.quantity}}</td>
-                                                <td>{{item.buy_price}}</td>
-                                                <td>{{item.total_investment}}</td>
-                                                <td>{{item.created_at}}</td>
-                                    </tr>
-                                        {% endfor %}
-                                           
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <h4 class="card-title">{{item.title}}</h4>
+                                <p>{{item.description}}</p>
                             </div>
                         </div>
                     </div>
                  
                 </div>
+
+                
               
                 <!-- Row -->
                 <!-- Row -->

@@ -1,4 +1,6 @@
 {% load static %}
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -116,24 +118,16 @@
                     
                         <li class="nav-small-cap">GENERAL</li>
                         
-                        <li> <a class="waves-effect waves-dark" href="{% url 'home' %}" aria-expanded="false"><i class="mdi mdi-laptop-windows"></i><span class="hide-menu">My Space</span></a> </li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-file"></i><span class="hide-menu">Portfolio </span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="{% url 'portfolio' %}">Holdings</a></li>
-                                <li><a href="{% url 'orderbook' %}">Positions</a></li>
-                              
-                            </ul>
-                        </li>
+                        <li> <a class="waves-effect waves-dark" href="{% url 'home' %}" aria-expanded="false"><i class="mdi mdi-laptop-windows"></i><span class="hide-menu">Stocks</span></a> </li>
+                        <li> <a class="waves-effect waves-dark" href="{% url 'transact' %}" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Transact</span></a> </li>
+
+                        <li> <a class="waves-effect waves-dark" href="{% url 'portfolio' %}" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Portfolio</span></a> </li>
+
                         <li> <a class="waves-effect waves-dark" href="{% url 'thistory' %}" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Transaction History</span></a> </li>
-                        <li> <a class="waves-effect waves-dark" href="{% url 'orderbook' %}" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Order Book</span></a> </li>
                         <li> <a class="waves-effect waves-dark" href="{% url 'pnl' %}" aria-expanded="false"><i class="mdi mdi-book-open"></i><span class="hide-menu">PnL</span></a> </li>
-                        <li> <a class="waves-effect waves-dark" href="{% url 'pnl' %}" aria-expanded="false"><i class="mdi mdi-book-open"></i><span class="hide-menu">Leagues</span></a> </li>
+                        <li> <a class="waves-effect waves-dark" href="{% url 'news' %}" aria-expanded="false"><i class="mdi mdi-book-open"></i><span class="hide-menu">News</span></a> </li>
 
-                        <li class="nav-small-cap">TRANSACT</li>
-                        <li> <a class="waves-effect waves-dark" href="{% url 'orderbook' %}" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Equity</span></a> </li>
-                        <li> <a class="waves-effect waves-dark" href="{% url 'orderbook' %}" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Futures and Options</span></a> </li>
-
-                       
+                                       
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -197,3 +191,5 @@
     <script src="{% static 'assets/plugins/styleswitcher/jQuery.style.switcher.js' %}"></script>
 </body>
 </html>
+
+
