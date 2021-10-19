@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Transfer Requests  | XAVAGE '21{% endblock %}
+
+{% block content %}
+
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <div class="row page-titles">
+                    <div class="col-md-5 col-8 align-self-center">
+                        <h3 class="text">Transfer Requests</h3>
+                      
+                    </div>
+                  
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <!-- Row -->
+         
+                <!-- Row -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Outgoing Requests</h4>
+                                <div class="table-responsive m-t-40">
+                                    <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                        <thead>
+                                         <tr>
+                                           
+                                            
+                                            <th style='text-transform: uppercase;'>From User</th>
+                                            <th style='text-transform: uppercase;'>Stock</th>
+                                            <th style='text-transform: uppercase;'>Quantity</th>
+                                            <th style='text-transform: uppercase;'>Date</th>
+                                            <th style='text-transform: uppercase;'>Status</th>
+                                            <th style='text-transform: uppercase;'>Delete</th>
+                                                
+                                         </tr>
+                                        </thead>
+                                     
+                                        <tbody>
+        
+                                            {% for item in stock %}
+                                            <tr>
+                                     
+                                                <td>{{ item.from_user }}</td>
+                                                <td>{{ item.stock }}</td>
+                                                <td>{{ item.quantity }}</td>
+                                                <td>{{ item.created_at }}</td>
+                                                <th style='text-transform: uppercase;'>{{item.status}}</th>
+                                                {% if item.active %}
+                                                <td><a href='{% url "trd" item.id %}'>Delete</a></td>
+                                                {% else %}
+                                                <td>-</td>
+                                                {% endif %}
+                                                
+                                
+                                          
+                                            
+                                            </tr>
+                                                {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                               
+        
+        
+        
+        
+                            </div>
+                        </div>
+                  
+                       
+                    </div>
+        
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Incoming Requests</h4>
+                                <div class="table-responsive m-t-40">
+                                    <table id="example24" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                        <thead>
+                                         <tr>
+                                           
+                                            
+                                            <th style='text-transform: uppercase;'>To User</th>
+                                            <th style='text-transform: uppercase;'>Stock</th>
+                                            <th style='text-transform: uppercase;'>Quantity</th>
+                                            <th style='text-transform: uppercase;'>Date</th>
+                                            <th style='text-transform: uppercase;'>Status</th>
+                                            <th style='text-transform: uppercase;'>Accept</th>
+                                            <th style='text-transform: uppercase;'>Decline</th>
+                                            
+                                          
+                                                
+                                         </tr>
+                                        </thead>
+                                     
+                                        <tbody>
+        
+                                            {% for item in othr %}
+                                            <tr>
+                                     
+                                                <td>{{ item.to_user }}</td>
+                                                <td>{{ item.stock }}</td>
+                                                <td>{{ item.quantity }}</td>
+                                                <td>{{ item.created_at }}</td>
+                                                <th style='text-transform: uppercase;'>{{item.status}}</th>
+                                                {% if item.active %}
+                                                <td><a href='{% url "tra" item.id %}'>Accept</a></td>
+                                                <td><a href='{% url "trr" item.id %}'>Decline</a></td>
+                                                {% else %}
+                                                <td>-</td>
+                                                <td>-</td>
+                                                {% endif %}
+                                          
+                                            
+                                            </tr>
+                                                {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                               
+        
+        
+        
+        
+                            </div>
+                        </div>
+                  
+                       
+                    </div>
+                </div>
+              
+                <!-- Row -->
+                <!-- Row -->
+                
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Right sidebar -->
+                <!-- ============================================================== -->
+                <!-- .right-sidebar -->
+                
+                <!-- ============================================================== -->
+                <!-- End Right sidebar -->
+                <!-- ============================================================== -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <footer class="footer">© 2021 Xavage 2021</footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+ 
+
+{% endblock %}

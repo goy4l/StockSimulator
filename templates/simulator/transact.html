@@ -66,17 +66,38 @@
                                         </div>
                                     {% endfor %}
                                 {% endif %}
+                                
 
                                 {% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
+                                {% for message in messages %}
+                                    
+                                        <div class="alert alert-danger">
+                                            <strong>{{ message|escape }}</strong>
+                                        </div>
+                                    
+                                {% endfor %}
+                              
+                            {% endif %}
+
+
+
+                      
                                     <form method="post">  
                                         {% csrf_token %}  
-                                        {{ form.as_p }}
+                                        <div class="form-group">  
+                                            <label for="pwd1">Transaction Type : </label>  
+                                            {{form.ttype}} 
+                                            
+                                        </div>  
+                                        <div class="form-group">  
+                                            <label for="pwd1">  Stock : </label>  
+                                            {{form.stock}} 
+                                        </div>  
+                                        <div class="form-group">  
+                                            <label for="pwd1">Quantity</label>  
+                                            <input type="number" class="form-control" id="text" placeholder="Enter Quantity" name="quantity">  
+                                        </div>  
+                                      
                                         <br>
                                         <button type="submit" class="btn btn-primary">Submit</button>  
                                     </form>  

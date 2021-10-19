@@ -123,7 +123,11 @@ def orderbook(request):
 
 @login_required
 def pnl(request):
-    return render(request,"simulator/pnl.html")
+    items = request.user.lauth.league
+    context = {'items': items}
+    template = "simulator/pnl.html"
+    return render(request, template, context) 
+   
 
 @login_required
 def News(request):
@@ -193,5 +197,52 @@ def equity_transactions(request):
         template = "simulator/transact.html"
         return render(request, template, context)
   
+@login_required
+def transfers(request):
+        if request.method == 'POST':
+            form = transfermaker(request.user,request.POST)
+            if form.is_valid():
+              a = form.save(commit = False)
+              a.to_user = request.user
+              a.league = request.user.lauth.league
+              a.status = 'PENDING'
+              a.active = True
+              a.save()
+              return HttpResponseRedirect(reverse_lazy('trequests'))
+        else:
+          form = transfermaker(request.user)
+        context = {'form':form}
+        template = "simulator/transfers.html"
+        return render(request, template, context)
 
-  
+@login_required
+def trequests(request):
+      stock = transfer.objects.filter(to_user = request.user,league = request.user.lauth.league)
+      othr = transfer.objects.filter(from_user = request.user,league = request.user.lauth.league)
+      for x in othr:
+          print(x)
+      context = {'stock': stock, 'othr':othr}
+      template = "simulator/requests.html"
+      return render(request, template, context)
+
+
+@login_required
+def trd(request,stockid):
+    stock = transfer.objects.get(id=stockid)
+    stock.delete()
+    return HttpResponseRedirect(reverse_lazy('trequests'))
+    
+
+@login_required
+def trr(request,stockid):
+    stock = transfer.objects.get(id=stockid)
+    stock.status = 'DECLINED'
+    stock.active = False
+    stock.save()
+    return HttpResponseRedirect(reverse_lazy('trequests'))
+
+@login_required
+def tra(request,stockid):
+    stock = transfer.objects.get(id=stockid)
+    stock.delete()
+    return HttpResponseRedirect(reverse_lazy('trequests'))

@@ -13,7 +13,13 @@ urlpatterns = [
     path('news', views.News, name='news'),
     path('lauth', views.Lauth , name='lauth'),
     path('news/<newsid>/',views.News_v, name='news_v'),  
-    path('buy',views.equity_transactions, name='transact'),  
+    path('transact',views.equity_transactions, name='transact'),  
+    path('transfer',views.transfers, name='transfers'),  
+    path('transfer/requests',views.trequests, name='trequests'),  
+    path('transfer/requests/delete/<stockid>/',views.trd, name='trd'),  
+    path('transfer/requests/decline/<stockid>/',views.trr, name='trr'),  
+    path('transfer/requests/accept/<stockid>/',views.tra, name='tra'),  
+
     
 
 ]

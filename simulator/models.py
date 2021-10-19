@@ -54,3 +54,15 @@ class transaction(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,related_name='transaction')
     created_at = models.DateTimeField(auto_now_add=True)
     league = models.ForeignKey(league, on_delete=models.CASCADE, related_name="transaction")
+
+
+class transfer(models.Model):
+    ttype_choices = (('PENDING','PENDING'),('ACCEPTED','ACCEPTED'),('DECLINED','DECLINED'),('INVALID','INVALID'))
+    stock = models.ForeignKey(stocks, on_delete=models.CASCADE, related_name='transfer')
+    quantity = models.IntegerField()
+    to_user = models.ForeignKey(User, on_delete=models.CASCADE,related_name='transfer_to')
+    from_user = models.ForeignKey(User, on_delete=models.CASCADE,related_name='transfer_from')
+    league = models.ForeignKey(league, on_delete=models.CASCADE, related_name="transfer")
+    created_at = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=100,choices = ttype_choices)
+    active = models.BooleanField()
