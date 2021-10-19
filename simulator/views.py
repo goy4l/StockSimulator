@@ -219,8 +219,6 @@ def transfers(request):
 def trequests(request):
       stock = transfer.objects.filter(to_user = request.user,league = request.user.lauth.league)
       othr = transfer.objects.filter(from_user = request.user,league = request.user.lauth.league)
-      for x in othr:
-          print(x)
       context = {'stock': stock, 'othr':othr}
       template = "simulator/requests.html"
       return render(request, template, context)
@@ -244,5 +242,44 @@ def trr(request,stockid):
 @login_required
 def tra(request,stockid):
     stock = transfer.objects.get(id=stockid)
-    stock.delete()
+    hs = holdings.objects.filter(user=request.user, league=request.user.lauth.league,stock = stock.stock)
+    if hs.exists():
+        print('Step1')
+        z = hs[0]
+        if z.quantity >= stock.quantity:
+            print('Step2')
+            if z.user == stock.from_user:
+                print('Step3')
+                t = holdings.objects.filter(user=stock.to_user, league=request.user.lauth.league,stock = stock.stock)
+                if t.exists():
+                    print('Step4')
+                    r = t[0]
+                    r.quantity += stock.quantity
+                    z.quantity -= stock.quantity
+                    r.save()
+                else:
+                    print('Step4')
+                    r = holdings(stock=stock.stock,quantity = stock.quantity,average_price = 0,user=stock.to_user,league=request.user.lauth.league)
+                    r.save()
+                    z.quantity -= stock.quantity
+                    r.save()
+                z.save()
+                if z.quantity == 0:
+                        z.delete()        
+                stock.status = 'ACCEPTED'
+                stock.active = False
+                stock.save()  
+            else:
+                stock.status = 'INVALID'
+                stock.active = False
+                stock.save()
+        else:
+          stock.status = 'INVALID'
+          stock.active = False
+          stock.save()
+
+    else:
+        stock.status = 'INVALID'
+        stock.active = False
+        stock.save()
     return HttpResponseRedirect(reverse_lazy('trequests'))
