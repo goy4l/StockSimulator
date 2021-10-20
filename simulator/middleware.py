@@ -22,10 +22,10 @@ class lauthMiddleware(MiddlewareMixin):
     
     def process_view(self, request, view_func, view_args, view_kwargs):
         # This code is executed just before the view is called
-       if request.user.is_authenticated:
-        if not lauth.objects.filter(user=request.user).exists() and not view_func == views.Lauth:
-          return HttpResponse("<meta http-equiv='refresh' content='0; URL=/lauth' />")
-
+     #  if request.user.is_authenticated:
+     #   if not lauth.objects.filter(user=request.user).exists() and not view_func == views.Lauth:
+     #     return HttpResponse("<meta http-equiv='refresh' content='0; URL=/lauth' />")
+     print('helo')
     def process_exception(self, request, exception):
         # This code is executed if an exception is raised
         print('fuck')
