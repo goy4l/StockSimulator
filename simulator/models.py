@@ -26,6 +26,9 @@ class stocks(models.Model):
     class Meta:
         verbose_name_plural = "Stocks"
 
+    def __str__(self):
+        return f"{self.name}"
+
 class news(models.Model):
     title = models.CharField(max_length=10000)
     stock = models.ForeignKey(stocks, on_delete=models.CASCADE, related_name="news")
@@ -35,6 +38,8 @@ class news(models.Model):
 
     class Meta:
         verbose_name_plural = "News"
+    def __str__(self):
+        return f"{self.title}"
 
 class holdings(models.Model):
     stock = models.ForeignKey(stocks, on_delete=models.CASCADE, related_name='holdings')
@@ -47,6 +52,7 @@ class holdings(models.Model):
 
     class Meta:
         verbose_name_plural = "Holdings"
+    
     
 class transaction(models.Model):
     ttype_choices = (('BUY','BUY'),('SELL','SELL'))
