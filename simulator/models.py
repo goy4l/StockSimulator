@@ -22,8 +22,9 @@ class stocks(models.Model):
     description = models.CharField(max_length=1000)
     price = models.IntegerField()
     league = models.ForeignKey(league, on_delete=models.CASCADE, related_name="stocks")
-    def __str__(self):
-        return f"{self.name}"
+    
+    class Meta:
+        verbose_name_plural = "Stocks"
 
 class news(models.Model):
     title = models.CharField(max_length=10000)
@@ -32,8 +33,8 @@ class news(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     league = models.ForeignKey(league, on_delete=models.CASCADE, related_name="news")
 
-    def __str__(self):
-        return f"{self.title}"
+    class Meta:
+        verbose_name_plural = "News"
 
 class holdings(models.Model):
     stock = models.ForeignKey(stocks, on_delete=models.CASCADE, related_name='holdings')
@@ -43,6 +44,9 @@ class holdings(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     league = models.ForeignKey(league, on_delete=models.CASCADE, related_name="holdings")
     updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name_plural = "Holdings"
     
 class transaction(models.Model):
     ttype_choices = (('BUY','BUY'),('SELL','SELL'))
