@@ -124,7 +124,16 @@ def orderbook(request):
 @login_required
 def pnl(request):
     items = request.user.lauth.league
-    context = {'items': items}
+    users = items.users.all()
+    cp = []
+    for x in users:
+        pvalue = request.user.lauth.balance
+        y = holdings.objects.filter(user=x,league = request.user.lauth.league)
+        for z in y:
+            pvalue += z.stock.price * z.quantity
+        cv = {'user':x,'pvalue':pvalue}
+        cp.append(cv)
+    context = {'items': cp}
     template = "simulator/pnl.html"
     return render(request, template, context) 
    

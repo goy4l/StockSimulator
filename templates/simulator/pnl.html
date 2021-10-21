@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}My Space | XAVAGE '21{% endblock %}
+{% block title %}League | XAVAGE '21{% endblock %}
 
 {% block content %}
 
@@ -44,7 +44,7 @@
                                         <thead>
                                             <tr>
                                                 <th>User</th>
-                                                <th>Balance</th>
+                                                <th>Portfolio Value</th>
                                                
 
                                                 
@@ -52,10 +52,10 @@
                                         </thead>
                                         <tbody>
                                         
-                                            {% for item in items.users.all %}
+                                            {% for item in items %}
                                     <tr>        
-                                                <td>{{item}}</td>
-                                                <td>{{item.lauth.balance}}</td>
+                                                <td>{{item.user}}</td>
+                                                <td>{{item.pvalue}}</td>
                                           
                                     </tr>
                                         {% endfor %}
