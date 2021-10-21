@@ -123,10 +123,8 @@ def orderbook(request):
 
 @login_required
 def pnl(request):
-    items = request.user.lauth.league
-    users = items.users.all()
     cp = []
-    for x in users:
+    for x in request.user.lauth.league.users.all():
         pvalue = request.user.lauth.balance
         y = holdings.objects.filter(user=x,league = request.user.lauth.league)
         for z in y:
