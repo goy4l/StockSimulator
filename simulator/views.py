@@ -160,7 +160,8 @@ def equity_transactions(request):
         if request.method == 'POST':
             form = transactionadder(request.user.lauth.league, request.POST)
             if form.is_valid():
-              a = form.save(commit = False)
+             a = form.save(commit = False)
+             if a.quantity > 0:
               b_price = stocks.objects.get(id=a.stock.id).price
               a.buy_price = b_price
               a.total_investment = b_price * a.quantity
@@ -196,7 +197,9 @@ def equity_transactions(request):
               
               a.save()
               t.save()
-              return HttpResponseRedirect(reverse_lazy('portfolio'))
+             else:
+                 messages.error('Quantity Must Be Above 0') 
+             return HttpResponseRedirect(reverse_lazy('portfolio'))
 
         else:
           form = transactionadder(request.user.lauth.league)
@@ -209,13 +212,16 @@ def transfers(request):
         if request.method == 'POST':
             form = transfermaker(request.user,request.POST)
             if form.is_valid():
-              a = form.save(commit = False)
+             a = form.save(commit = False)
+             if a.quantity > 0: 
               a.to_user = request.user
               a.league = request.user.lauth.league
               a.status = 'PENDING'
               a.active = True
               a.save()
-              return HttpResponseRedirect(reverse_lazy('trequests'))
+             else: 
+                 messages.error("Transfer Quantity Must Be Above 0")
+             return HttpResponseRedirect(reverse_lazy('trequests'))
         else:
           form = transfermaker(request.user)
         context = {'form':form}
