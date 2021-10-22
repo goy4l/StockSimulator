@@ -198,7 +198,7 @@ def equity_transactions(request):
               a.save()
               t.save()
              else:
-                 messages.error('Quantity Must Be Above 0') 
+                 messages.error(request,'Quantity Must Be Above 0') 
              return HttpResponseRedirect(reverse_lazy('portfolio'))
 
         else:
@@ -220,7 +220,7 @@ def transfers(request):
               a.active = True
               a.save()
              else: 
-                 messages.error("Transfer Quantity Must Be Above 0")
+                 messages.error(request,"Transfer Quantity Must Be Above 0")
              return HttpResponseRedirect(reverse_lazy('trequests'))
         else:
           form = transfermaker(request.user)
