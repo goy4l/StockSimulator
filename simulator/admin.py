@@ -14,7 +14,7 @@ class leagueAdmin(admin.ModelAdmin):
 
 @admin.register(stocks)
 class stockAdmin(admin.ModelAdmin):
-    list_display = ('id',"name", "price")
+    list_display = ("name", "price")
     search_fields = ("name__startswith",)
 
 
