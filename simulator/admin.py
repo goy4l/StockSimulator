@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.contrib.admin import AdminSite
 from django.utils.translation import ugettext_lazy
 
-from .models import league, stocks,news,holdings, transaction,transfer
+from .models import league, stocks,news,holdings, transaction,transfer,lauth
 
 admin.site.site_header = 'Xavage Administration'
 
@@ -17,7 +17,9 @@ class stockAdmin(admin.ModelAdmin):
     list_display = ("name", "price")
     search_fields = ("name__startswith",)
 
-
+@admin.register(lauth)
+class lauthAdmin(admin.ModelAdmin):
+    list_display = ("user", "balance")
 
 @admin.register(news)
 class newsAdmin(admin.ModelAdmin):
