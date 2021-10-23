@@ -111,7 +111,7 @@ def portfolio(request):
 
 @login_required
 def thistory(request):
-    items = transaction.objects.filter(user = request.user, league = request.user.lauth.league)
+    items = transaction.objects.filter(league = request.user.lauth.league)
     context = {'items': items}
     template = "simulator/transaction_history.html"
     return render(request, template, context) 
