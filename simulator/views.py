@@ -125,8 +125,8 @@ def orderbook(request):
 def pnl(request):
     cp = []
     for x in request.user.lauth.league.users.all().exclude(username='admin'):
-        pvalue = request.user.lauth.balance
-        y = holdings.objects.filter(user=x,league = request.user.lauth.league)
+        pvalue = x.lauth.balance
+        y = holdings.objects.filter(user=x,league = x.lauth.league)
         for z in y:
             pvalue += z.stock.price * z.quantity
         cv = {'user':x,'pvalue':pvalue}
