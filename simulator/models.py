@@ -8,19 +8,19 @@ class league(models.Model):
     description = models.CharField(max_length=1000)
     password = models.CharField(max_length=1000)
     game_code = models.CharField(max_length=1000)
-    starting_balance = models.IntegerField()
+    starting_balance = models.DecimalField(decimal_places=2,max_digits=100)
     def __str__(self):
         return f"{self.name}"
 
 class lauth(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     league = models.ForeignKey(league,on_delete=models.CASCADE)
-    balance = models.IntegerField()
+    balance = models.DecimalField(decimal_places=2,max_digits=100)
 
 class stocks(models.Model):
     name = models.CharField(max_length=1000)
     description = models.CharField(max_length=1000)
-    price = models.IntegerField()
+    price = models.DecimalField(decimal_places=2,max_digits=100)
     league = models.ForeignKey(league, on_delete=models.CASCADE, related_name="stocks")
     
     class Meta:
@@ -59,8 +59,8 @@ class transaction(models.Model):
     ttype = models.CharField(max_length=100,choices = ttype_choices)
     stock = models.ForeignKey(stocks, on_delete=models.CASCADE, related_name='transaction')
     quantity = models.IntegerField()
-    buy_price = models.IntegerField()
-    total_investment = models.IntegerField()
+    buy_price = models.DecimalField(decimal_places=2,max_digits=100)
+    total_investment = models.DecimalField(decimal_places=2,max_digits=100)
     user = models.ForeignKey(User, on_delete=models.CASCADE,related_name='transaction')
     created_at = models.DateTimeField(auto_now_add=True)
     league = models.ForeignKey(league, on_delete=models.CASCADE, related_name="transaction")

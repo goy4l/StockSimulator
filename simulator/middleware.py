@@ -28,7 +28,7 @@ class lauthMiddleware(MiddlewareMixin):
        #print('helo')
     def process_exception(self, request, exception):
         # This code is executed if an exception is raised
-        print('fuck')
+        print(exception)
 
     def process_template_response(self, request, response):
         # This code is executed if the response contains a render() method
