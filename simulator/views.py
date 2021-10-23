@@ -205,7 +205,7 @@ def equity_transactions(request):
         else:
           form = transactionadder(request.user.lauth.league)
         context = {'form':form}
-        template = "simulator/transact.html"
+        template = "simulator/order_book.html"
         return render(request, template, context)
   
 @login_required
