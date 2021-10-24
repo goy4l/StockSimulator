@@ -227,7 +227,7 @@ def transfers(request):
         else:
           form = transfermaker(request.user)
         context = {'form':form}
-        template = "simulator/tclose.html"
+        template = "simulator/transfers.html"
         return render(request, template, context)
 
 @login_required
