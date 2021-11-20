@@ -1,5 +1,4 @@
 <p align="center">
-<a href="https://flowerapps.io"><img src="https://github.com/sarafraghav/Flower-Accounts/blob/master/staticfiles/Screenshot%20from%202021-11-19%2019-44-05.png" alt="OpenSourceAccounting" border="0"></a>
 <h1 align="center">Stock Simulator</h1>
 <h4 align="center">Open Source Stock Simulator. Price API not connected. Used for competition with custom price</h4>
 
