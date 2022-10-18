@@ -1,10 +1,10 @@
 <p align="center">
 <h1 align="center">Stock Simulator</h1>
-<h4 align="center">Open Source Stock Simulator. Price API not connected. Used for competition with custom price</h4>
+<h4 align="center">Open Source Stock Simulator.</h4>
 
 # Description 📜
 
-This repository for an open source stock simulator. Feel free to contanct [sarafraghav1@gmail.com](mailto:sarafraghav1@gmail.com) in case of any queries.
+This repository for the open source stock simulator being used in the Bears and Bulls event at XAVAGE 2022.
 
 # Installation 🧑‍💻
 
